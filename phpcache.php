@@ -6,7 +6,7 @@ namespace reallysimple;
 
 
 
-interface PhpCacheInteraface {
+interface PhpCacheInterface {
 
 	public function store($key, $data, $ttl = 0);
 	public function fetch($key);
@@ -15,7 +15,7 @@ interface PhpCacheInteraface {
 }
 
 
-class PhpCache implements PhpCacheInteraface {
+class PhpCache implements PhpCacheInterface {
 	
 	
 	private $_cache;
@@ -29,7 +29,7 @@ class PhpCache implements PhpCacheInteraface {
 			$this->_cache = new PhpFileCache($cache_dir);
 		}
 		else {
-			throw new /Exception('APC is not installed, and no cache directory was specified for file cache.');
+			throw new \Exception('APC is not installed, and no cache directory was specified for file cache.');
 		}
 	}
 	
