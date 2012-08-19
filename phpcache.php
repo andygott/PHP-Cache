@@ -109,7 +109,7 @@ class PhpFileCache implements PhpCacheInterface {
 			return false;
 		}
 		$store = unserialize(file_get_contents($fpath));
-		if (!is_array($store) || !isset($store['data']) || !isset($store['ttl'])) {
+		if (is_array($store) && isset($store['data']) && isset($store['ttl'])) {
 			if (filemtime($fpath) < time() - $store['ttl']) {
 				return false;
 			}
